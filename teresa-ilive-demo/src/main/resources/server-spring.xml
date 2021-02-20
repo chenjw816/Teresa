@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:component-scan base-package="com.spirit.teresa.server"/>
+
+    <context:property-placeholder location="classpath:teresa.properties"/>
+
+
+
+    <bean id="serializer" class="com.spirit.teresa.serializer.ProtobufSerializer"/>
+
+    <bean id="workerService" class="com.spirit.teresa.worker.ThreadPoolWorkerService"/>
+    <!--<bean id="workerMode" class="CoroutineWorkerService"/>-->
+
+    <bean id="registryService" class="com.spirit.teresa.registry.DefaultRegistryService"/>
+
+    <!--this can be config by spring annotation-->
+    <!--<bean id="ioPacketCodec" class="com.spirit.teresa.codec.ILivePackageIoPacketCodecServicecService">-->
+        <!--<constructor-arg name="client" value="false"/>-->
+        <!---->
+    <!--</bean>-->
+        <!--<bean id="rpcServer" class="com.spirit.teresa.server.RpcServer">-->
+        <!--<constructor-arg name="ioPacketCodec" ref="ioPacketCodec"/>-->
+        <!--<constructor-arg name="workerMode" ref="workerMode"/>-->
+        <!--<constructor-arg name="serializer" ref="PROTOBUF_SERIALIZER"/>-->
+        <!--<property name="serverAddress" value="${server.address}"/>-->
+    <!--</bean>-->
+
+</beans>
